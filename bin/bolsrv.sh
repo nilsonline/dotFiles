@@ -2,22 +2,25 @@
 
 # Author: Nils Gerstner
 # Last revision: 21st September 2018
-# Version: v1.2
+# Version: v1.4
 # Description: ssh into server from array
 
-servers(
+servers=(
 		'user@server01.com'
 		'user@server02.com'
 		'user@server03.com'
-		'user@server04.com'
-		'user@server05.com'
-		'user@server06.com'
-		'user@server07.com'
-		'user@server08.com'
-		'user@server09.com'
-		'user@server10.com'
 )
-	
+vpnservers=(
+		'user@vpn_server01.com'
+		'user@vpn_server02.com'
+		'user@vpn_server03.com'
+		'user@vpn_server04.com'
+)
+
+# Is the machine connected to Cisco VPN?
+if [ "$(ip addr |grep -m 1 -o cscotun)" = "cscotun" ];then
+		servers=("${vpnservers[@]}" "${servers[@]}")
+fi
 
 select SERVER in "${servers[@]}"; do
 		case $SERVER in
@@ -25,7 +28,7 @@ select SERVER in "${servers[@]}"; do
 						exit 1;
 						;;
 				*)
-						ssh $SERVER
+						ssh -o ConnectTimeout=7 $SERVER
 						exit 1;
 						;;
 		esac
