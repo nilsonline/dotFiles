@@ -2,6 +2,7 @@
 
 This repository contains my personal configurations and scripts.
 
+```
 dotFiles
 ├── .bash_aliases					- Bash aliases
 ├── .bashrc							- Bash configuration
@@ -15,3 +16,4 @@ dotFiles
     ├── sqm.sh						- Script to start IBM MQ QueueManager and IBM Integration Bus
     ├── update_mac.sh 			- Update Mac
     └── update_ubuntu_18.4.sh - Update system and update/build vim from source
+```
