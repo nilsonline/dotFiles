@@ -18,7 +18,8 @@ vpnservers=(
 )
 
 # Is the machine connected to Cisco VPN?
-if [ "$(ip addr |grep -m 1 -o cscotun)" = "cscotun" ];then
+if [ -n $(ip addr |grep -m 1 cscotun) ] && [ -n $(dig +short ${vpnservers[0]}) ];the
+		  nif [ "$(ip addr |grep -m 1 -o cscotun)" = "cscotun" ];then
 		servers=("${vpnservers[@]}" "${servers[@]}")
 fi
 
