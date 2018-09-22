@@ -56,8 +56,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# I normaly have a green prompt on my local, yellow on Test and QA and red on Production systems
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+		  	# Green prompt
+			PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+			# Yellow prompt
+			#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+			# Red prompt
+			#PS1='${debian_chroot:+($debian_chroot)}\[\033[00;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -104,6 +110,5 @@ if [ -n "${PROSPECTIVE_MQSI_BASE_FILEPATH+MQSI_PROFILE_NOT_SET}" ]; then
 else
 		. /opt/ibm/iib-10.0.0.10/server/bin/mqsiprofile
 fi
-}
 
 JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
